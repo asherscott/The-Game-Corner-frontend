@@ -1,9 +1,10 @@
 li {
   padding: 0.5rem;
   padding-left: 0;
-  width: 30vw;
+  border-bottom: 1px solid rgb(0, 0, 0, 0);
 }
 
-ul {
-  width: 35vw;
+li:hover {
+  cursor: pointer;
+  border-bottom: 1px solid rgb(255, 94, 0);
 }

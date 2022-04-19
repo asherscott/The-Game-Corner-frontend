@@ -1,27 +1,39 @@
-import GameList from "./GameList";
-import Nav from "./Nav";
-import DisplayGame from "./DisplayGame";
 import { useState, useEffect } from "react";
 import "./Game.css";
-import Search from "./Search";
+import Nav from "./Nav";
+
+import GameList from "./GameList";
+import Settings from "./Settings";
+import GameForm from "./GameForm";
+import DisplayGame from "./DisplayGame";
+import User from "./User";
 
 function Game() {
-  // Displays the list of games and a section for additional info on a selected game
-
   const [gameList, setGameList] = useState([]);
+  const [selected, setSelected] = useState(1);
+  const [game, setGame] = useState(null);
+  const [showGame, setShowGame] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:9292/")
       .then((r) => r.json())
-      .then((data) => setGameList(data));
+      .then((games) => {
+        setGameList(games);
+      });
   }, []);
+
+  const selectGame = (game) => {
+    setGame(game);
+    setShowGame(true);
+    setSelected(4);
+  };
 
   return (
     <section id="gameSection">
       <div className="wrapper">
         <div id="btnWrapper">
           <a href="#gameTitle">
-            <button>ᐯ</button>
+            <button id="downBtn">ᐯ</button>
           </a>
         </div>
       </div>
@@ -31,12 +43,15 @@ function Game() {
       </div>
 
       <div className="gameWrapper">
-        <Nav />
-        <Search gameList={gameList} placeholder="Search..." />
+        <Nav selected={selected} setSelected={setSelected} game={game} />
         <div className="container">
-          <GameList gameList={gameList} />
-
-          <DisplayGame />
+          {selected === 1 ? (
+            <GameList gameList={gameList} selectGame={selectGame} />
+          ) : null}
+          {selected === 2 ? <Settings /> : null}
+          {selected === 3 ? <GameForm /> : null}
+          {selected === 4 ? <DisplayGame game={game} /> : null}
+          {selected === 5 ? <User /> : null}
         </div>
       </div>
     </section>
