@@ -1,0 +1,16 @@
+nav {
+  width: 95%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+nav > a {
+  padding: 0 2rem 0.5rem 0;
+  /* margin-right: auto; */
+}
