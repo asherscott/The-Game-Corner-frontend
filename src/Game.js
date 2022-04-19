@@ -1,4 +1,5 @@
 import GameList from "./GameList";
+import Nav from "./Nav";
 import DisplayGame from "./DisplayGame";
 import { useState, useEffect } from "react";
 import "./Game.css";
@@ -29,6 +30,7 @@ function Game() {
       </div>
 
       <div className="gameWrapper">
+        <Nav />
         <div className="container">
           <GameList gameList={gameList} />
 
