@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 30vh;
+}
+
+#title {
+  background-color: rgb(22, 22, 22);
+  padding: 0 2rem;
+  font-size: 70px;
+  z-index: 1;
+}
+
+#background {
+  background-image: url("../public/transport1_touchup.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+  z-index: -200;
+}
+
+#effect {
+  position: absolute;
+  background-image: url("../public/transport1_effects.png");
+  width: 200vw;
+  height: 90vh;
+  animation: side 20s ease-in-out infinite;
+  animation-delay: -11s;
+}
+
+@keyframes side {
+  0%,
+  100% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translate(-25vw);
+  }
+}
