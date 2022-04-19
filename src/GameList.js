@@ -2,9 +2,9 @@ import "./GameList.css";
 import Search from "./Search";
 
 function GameList({ gameList, selectGame }) {
-  const renderList = gameList.map((game) => {
-    return <li key={game.id}>{game.name}</li>;
-  });
+  // const renderList = gameList.map((game) => {
+  //   return <li key={game.id}>{game.name}</li>;
+  // });
 
   return (
     <div>

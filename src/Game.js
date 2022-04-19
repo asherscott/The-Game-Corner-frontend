@@ -13,7 +13,6 @@ function Game() {
   const [selected, setSelected] = useState(1);
   const [game, setGame] = useState(null);
   const [showGame, setShowGame] = useState(false);
-  const [showUser, setShowUser] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:9292/")

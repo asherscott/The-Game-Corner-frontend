@@ -1,3 +1,6 @@
 /* .gameName{
     display:none;
 } */
+.search-bar > input {
+  color: black;
+}
