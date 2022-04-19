@@ -12,6 +12,7 @@ nav {
 
 .link {
   padding: 0.5rem;
+  border-radius: 10px 10px 0 0;
 }
 
 .link:hover {

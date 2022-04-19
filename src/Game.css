@@ -58,4 +58,5 @@
   width: 95%;
   background-color: rgb(15, 15, 15, 0.8);
   border-radius: 10px;
+  border-top-left-radius: 0;
 }
