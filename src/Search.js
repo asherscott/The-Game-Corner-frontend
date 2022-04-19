@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Search.css";
 
-function Search({ placeholder, gameList }) {
+function Search({ placeholder, gameList, selectGame }) {
   const [search, setSearch] = useState("");
   // console.log (search)
 
@@ -18,7 +18,13 @@ function Search({ placeholder, gameList }) {
             game.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((game) => (
-            <li className="gameName">{game.name}</li>
+            <li
+              onClick={() => selectGame(game)}
+              key={game.id}
+              className="gameName"
+            >
+              {game.name}
+            </li>
           ))}
       </ul>
     </div>
