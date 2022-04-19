@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import DisplayGame from "./DisplayGame";
 import { useState, useEffect } from "react";
 import "./Game.css";
+import Search from "./Search";
 
 function Game() {
   // Displays the list of games and a section for additional info on a selected game
@@ -31,6 +32,7 @@ function Game() {
 
       <div className="gameWrapper">
         <Nav />
+        <Search gameList={gameList} placeholder="Search..." />
         <div className="container">
           <GameList gameList={gameList} />
 
