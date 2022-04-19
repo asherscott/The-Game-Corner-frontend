@@ -9,7 +9,6 @@ function App() {
     <div>
       <Home />
       <Game />
-      <Setting ></Setting>
     </div>
   );
 }
