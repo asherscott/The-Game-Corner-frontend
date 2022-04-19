@@ -34,10 +34,7 @@ function Game() {
       </div>
 
       <div className="gameWrapper">
-        <Nav />
-        <Search gameList={gameList} placeholder="Search..." />
         <Nav selected={selected} setSelected={setSelected} />
-
         <div className="container">
           {selected === 1 ? <GameList gameList={gameList} /> : null}
           {selected === 2 ? <Settings /> : null}
