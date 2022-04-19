@@ -1,13 +1,16 @@
-import GameList from "./GameList";
-import Nav from "./Nav";
-import DisplayGame from "./DisplayGame";
 import { useState, useEffect } from "react";
 import "./Game.css";
+import Nav from "./Nav";
+
+import GameList from "./GameList";
+import Settings from "./Settings";
+import GameForm from "./GameForm";
+import DisplayGame from "./DisplayGame";
+import User from "./User";
 
 function Game() {
-  // Displays the list of games and a section for additional info on a selected game
-
   const [gameList, setGameList] = useState([]);
+  const [selected, setSelected] = useState(1);
 
   useEffect(() => {
     fetch("http://localhost:9292/")
@@ -20,7 +23,7 @@ function Game() {
       <div className="wrapper">
         <div id="btnWrapper">
           <a href="#gameTitle">
-            <button>ᐯ</button>
+            <button id="downBtn">ᐯ</button>
           </a>
         </div>
       </div>
@@ -30,11 +33,13 @@ function Game() {
       </div>
 
       <div className="gameWrapper">
-        <Nav />
+        <Nav selected={selected} setSelected={setSelected} />
         <div className="container">
-          <GameList gameList={gameList} />
-
-          <DisplayGame />
+          {selected === 1 ? <GameList gameList={gameList} /> : null}
+          {selected === 2 ? <Settings /> : null}
+          {selected === 3 ? <GameForm /> : null}
+          {selected === 4 ? <DisplayGame /> : null}
+          {selected === 5 ? <User /> : null}
         </div>
       </div>
     </section>
