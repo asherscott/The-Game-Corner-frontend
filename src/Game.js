@@ -7,6 +7,7 @@ import Settings from "./Settings";
 import GameForm from "./GameForm";
 import DisplayGame from "./DisplayGame";
 import User from "./User";
+import Reviews from "./Reviews";
 
 function Game() {
   const [gameList, setGameList] = useState([]);
@@ -51,6 +52,7 @@ function Game() {
           {selected === 2 ? <Settings /> : null}
           {selected === 3 ? <GameForm /> : null}
           {selected === 4 ? <DisplayGame game={game} /> : null}
+          {selected === 4 ? <Reviews /> : null}
           {selected === 5 ? <User /> : null}
         </div>
       </div>
