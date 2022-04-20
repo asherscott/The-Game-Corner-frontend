@@ -42,13 +42,11 @@ function Settings({gameList, setGenre, setPlatform}) {
     return (
         <div >
             <select  onChange={handleChangeGenre}>
-                <option className="saveState" selected="true" disabled="true">Genre</option>
-                <option></option>
+                <option className="saveState" selected="true" value="">Genre</option>
                 {genres.map((genre) => <option  className="options" value={genre}>{genre}</option>)}
             </select>
             <select onChange={handleChangePlatform}>
-                <option className="saveState" selected="true" disabled="true">Platform</option>
-                <option></option>
+                <option className="saveState" selected="true" value="">Platform</option>
                 {platforms.map((platform) => <option className="options" value={platform}>{platform}</option>)}
             </select>
         </div>
