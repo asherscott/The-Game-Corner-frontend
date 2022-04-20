@@ -11,3 +11,22 @@
 .comment {
   margin-left: 3rem;
 }
+
+.revBtn {
+  border: none;
+  background-color: rgb(0, 0, 0, 0);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.like {
+  color: lightgreen;
+}
+
+.dislike {
+  color: red;
+}
+
+article:hover .revBtn {
+  opacity: 1;
+}
