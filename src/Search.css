@@ -1,6 +1,28 @@
-/* .gameName{
-    display:none;
-} */
-.search-bar > input {
-  color: black;
+.searchbar {
+  border-radius: 20px;
+  margin: 1rem 0 0.5rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 12pt;
+  padding-left: 1rem;
+  height: 30px;
+  width: 90%;
+  min-width: 150px;
+  background-color: rgb(33, 33, 33);
+  color: rgb(214, 214, 214);
+}
+
+.gameName {
+  padding: 0.5rem;
+  padding-left: 0;
+  border-bottom: 1px solid rgb(0, 0, 0, 0);
+}
+
+.gameName:hover {
+  cursor: pointer;
+  border-bottom: 1px solid rgb(255, 94, 0);
+}
+
+.search-bar {
+  margin-right: 1rem;
 }

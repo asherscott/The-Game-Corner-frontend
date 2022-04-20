@@ -12,12 +12,12 @@ nav {
 
 .link {
   padding: 0.5rem;
+  border-radius: 10px 10px 0 0;
 }
 
 .link:hover {
   cursor: pointer;
   color: rgb(255, 140, 73);
-  /* background-color: rgb(15, 15, 15, 0.8); */
 }
 
 .selected {
