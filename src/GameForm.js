@@ -24,27 +24,23 @@ function GameForm({gameList, setGameList}) {
       release,
       // image,
     }
-  console.log(newGame)
-  
-  fetch(`http://localhost:9292/games`,{
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json",
-            Accepts: "application/json"
-        },
-        body: JSON.stringify(newGame)
-        })
-        .then(res => setGameList([...gameList, res.json()]))
-        .then(data => setForm({
-          name:"",
-          genre:"",
-          developer:"",
-          platform:"",
-          description:"",
-          release:"",
-          // image:"",
-        }));
-        
+
+   createGame(newGame).then(data => setGameList([...gameList, data]))
+
+  }
+
+  async function createGame(gameBody){
+    const data = await fetch(`http://localhost:9292/games`,{
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accepts: "application/json"
+      },
+      body: JSON.stringify(gameBody)
+      })
+
+      return data.json()
+
   }
 
 

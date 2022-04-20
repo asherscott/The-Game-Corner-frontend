@@ -33,7 +33,7 @@ function Settings({gameList, setGenre, setPlatform}) {
       ))    
   
   gameList.forEach((game) => {
-    if(!genres.includes(game.platform)) platforms.push(game.platform)
+    if(!platforms.includes(game.platform)) platforms.push(game.platform)
   })
 
 

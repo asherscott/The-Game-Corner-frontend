@@ -24,7 +24,7 @@ function Game() {
       .then((games) => {
         setGameList(games);
       });
-  }, [gameList]);
+  }, [game]);
 
 
 
