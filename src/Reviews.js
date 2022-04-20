@@ -1,19 +1,48 @@
 import "./Reviews.css";
 import ReactStars from "react-rating-stars-component";
 import Review from "./Review";
+import { useState } from "react";
 
 function Reviews({ game }) {
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
+  const [newReview, setNewReview] = useState({});
+  const [reviews, setReviews] = useState(game.reviews);
 
-  const renderReviews = game.reviews.map((review) => {
+  const renderReviews = reviews.map((review) => {
     return <Review key={review.id} review={review} />;
   });
 
+  function handleNewReview(object) {
+    let current = new Date();
+    let cDate =
+      current.getFullYear() +
+      "-" +
+      (current.getMonth() + 1) +
+      "-" +
+      current.getDate();
+
+    setNewReview((prevState) => ({
+      ...prevState,
+      ...object,
+      ...{ game_id: game.id },
+      ...{ date: cDate },
+      ...{ user_id: 0 },
+    }));
+  }
+
   function submitReview(e) {
     e.preventDefault();
-    console.log("tt");
+
+    const config = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReview),
+    };
+
+    fetch("http://localhost:9292/reviews", config)
+      .then((r) => r.json())
+      .then((rev) => {
+        setReviews((prevState) => [...prevState, rev]);
+      });
   }
 
   return (
@@ -23,9 +52,8 @@ function Reviews({ game }) {
           <div className="starsWrapper">
             <ReactStars
               count={5}
-              onChange={ratingChanged}
+              onChange={(rating) => handleNewReview({ rating: rating })}
               size={24}
-              //   activeColor="rgb(255, 94, 0)"
             />
           </div>
 
@@ -33,6 +61,10 @@ function Reviews({ game }) {
             type="text"
             placeholder="Leave a comment..."
             className="textEntry searchbar"
+            onChange={(e) =>
+              handleNewReview({ [e.target.name]: e.target.value })
+            }
+            name="comment"
           />
           <button type="submit">Comment</button>
           {/* change button clickable/notClickable class if form has been filled in */}

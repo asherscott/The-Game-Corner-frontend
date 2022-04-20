@@ -40,7 +40,7 @@ function Game() {
       return game.platform === platform;
     }
   });
-  console.log(filterGames);
+  // console.log(filterGames);
   return (
     <section id="gameSection">
       <div className="wrapper">
