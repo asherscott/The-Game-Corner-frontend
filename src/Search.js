@@ -45,28 +45,34 @@ function Search({ placeholder, gameList, selectGame }) {
   // console.log (search)
 
   return (
-    <div className="search-bar">
-      <input
-        className="searchbar"
-        type="text"
-        placeholder={placeholder}
-        onChange={(e) => setSearch(e.target.value)}
+    <div className="gameInfo">
+      <div className="search-bar">
+        <input
+          className="searchbar"
+          type="text"
+          placeholder={placeholder}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <ul className="searchGameList">
+          {gameList
+            .filter((game) =>
+              game.name.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((game) => (
+              <li
+                onClick={() => selectGame(game)}
+                key={game.id}
+                className="gameName"
+              >
+                {game.name}
+              </li>
+            ))}
+        </ul>
+      </div>
+      <img
+        className="gameImg"
+        src="https://cohenwoodworking.com/wp-content/uploads/2016/09/image-placeholder-500x500.jpg"
       />
-      <ul className="searchGameList">
-        {gameList
-          .filter((game) =>
-            game.name.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((game) => (
-            <li
-              onClick={() => selectGame(game)}
-              key={game.id}
-              className="gameName"
-            >
-              {game.name}
-            </li>
-          ))}
-      </ul>
     </div>
   );
 }
