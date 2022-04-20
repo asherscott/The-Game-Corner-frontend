@@ -1,10 +1,15 @@
 import "./Reviews.css";
 import ReactStars from "react-rating-stars-component";
+import Review from "./Review";
 
-function Reviews() {
+function Reviews({ game }) {
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+
+  const renderReviews = game.reviews.map((review) => {
+    return <Review key={review.id} review={review} />;
+  });
 
   function submitReview(e) {
     e.preventDefault();
@@ -30,9 +35,12 @@ function Reviews() {
             className="textEntry searchbar"
           />
           <button type="submit">Comment</button>
+          {/* change button clickable/notClickable class if form has been filled in */}
           {/* <button className={} type="submit">Comment</button> */}
         </form>
       </div>
+
+      {renderReviews}
     </div>
   );
 }

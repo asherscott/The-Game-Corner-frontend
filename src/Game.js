@@ -14,8 +14,8 @@ function Game() {
   const [selected, setSelected] = useState(1);
   const [game, setGame] = useState(null);
   const [showGame, setShowGame] = useState(false);
-  const [genre,setGenre]=useState("");
-  const [platform,setPlatform]=useState("")
+  const [genre, setGenre] = useState("");
+  const [platform, setPlatform] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:9292/")
@@ -31,18 +31,16 @@ function Game() {
     setSelected(4);
   };
 
-  const filterGames = gameList.filter(game =>{
-    if (genre && platform){
-      return (game.genre===genre && game.platform===platform);
+  const filterGames = gameList.filter((game) => {
+    if (genre && platform) {
+      return game.genre === genre && game.platform === platform;
+    } else if (genre) {
+      return game.genre === genre;
+    } else if (platform) {
+      return game.platform === platform;
     }
-    else if (genre){
-      return (game.genre===genre)
-    }
-    else if (platform){
-      return (game.platform===platform)
-    }
-  })
-console.log(filterGames)
+  });
+  console.log(filterGames);
   return (
     <section id="gameSection">
       <div className="wrapper">
@@ -61,12 +59,21 @@ console.log(filterGames)
         <Nav selected={selected} setSelected={setSelected} game={game} />
         <div className="container">
           {selected === 1 ? (
-            <GameList gameList={filterGames.length===0? gameList:filterGames} selectGame={selectGame} />
+            <GameList
+              gameList={filterGames.length === 0 ? gameList : filterGames}
+              selectGame={selectGame}
+            />
           ) : null}
-          {selected === 2 ? <Settings  gameList={gameList} setGenre={setGenre} setPlatform={setPlatform} /> : null}
+          {selected === 2 ? (
+            <Settings
+              gameList={gameList}
+              setGenre={setGenre}
+              setPlatform={setPlatform}
+            />
+          ) : null}
           {selected === 3 ? <GameForm /> : null}
           {selected === 4 ? <DisplayGame game={game} /> : null}
-          {selected === 4 ? <Reviews /> : null}
+          {selected === 4 ? <Reviews game={game} /> : null}
           {selected === 5 ? <User /> : null}
         </div>
       </div>

@@ -2,6 +2,7 @@
   border-top: 1px solid rgb(255, 94, 0);
   background-color: rgb(22, 22, 22);
   padding-top: 1rem;
+  padding-bottom: 10rem;
 }
 
 .reviewForm {
@@ -23,10 +24,11 @@
   border-radius: 0%;
   padding: 0;
   margin: 0;
+  transition: 0.3s;
 }
 
 .textEntry:focus {
-  border-bottom: 1px solid rgb(255, 94, 0);
+  border-bottom: 2px solid rgb(178, 178, 178);
 }
 
 .reviewForm button {
@@ -45,3 +47,7 @@
 /* .reviewForm input:focus + button {
   display: block;
 } */
+
+.formWrapper {
+  margin-bottom: 2rem;
+}
