@@ -25,7 +25,7 @@ function Reviews({ game }) {
       ...object,
       ...{ game_id: game.id },
       ...{ date: cDate },
-      ...{ user_id: 0 },
+      ...{ user_id: 1 },
     }));
   }
 
