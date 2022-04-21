@@ -32,3 +32,11 @@ h3 {
   font-size: 16pt;
   margin-top: 0.5rem;
 }
+
+.gameCard .red {
+  color: red;
+}
+
+.gameCard .green {
+  color: lightgreen;
+}
