@@ -33,7 +33,7 @@ function Search({ placeholder, gameList, selectGame }) {
         </ul>
       </div>
       {previewImg ? (
-        <img className="gameImg previewImg" src={previewImg} />
+        <img className="gameImg previewImg" src={previewImg} alt="Game Image"/>
       ) : null}
     </div>
   );

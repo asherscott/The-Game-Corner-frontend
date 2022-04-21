@@ -74,8 +74,8 @@ function Game() {
             />
           ) : null}
           {/* {selected === 2 ? <Settings  gameList={gameList} setGenre={setGenre} setPlatform={setPlatform} /> : null} */}
-          {selected === 3 ? <GameForm gameList={gameList} setGameList={setGameList} /> : null}
-          {selected === 4 ? <DisplayGame game={game} /> : null}
+          {selected === 3 ? <GameForm gameList={gameList} setGameList={setGameList} setSelected={setSelected} /> : null}
+          {selected === 4 ? <DisplayGame gameList={gameList} setGameList={setGameList} setSelected={setSelected} setGame={setGame} game={game} /> : null}
           {selected === 4 ? <Reviews game={game} /> : null}
           {selected === 5 ? <User /> : null}
         </div>

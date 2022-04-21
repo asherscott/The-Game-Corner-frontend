@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function GameForm({gameList, setGameList}) {
+function GameForm({gameList, setGameList, setSelected}) {
   const [form,setForm]= useState({
     name:"",
     genre:"",
@@ -8,7 +8,7 @@ function GameForm({gameList, setGameList}) {
     platform:"",
     description:"",
     release:"",
-    // image:"",
+    image:null,
   })
 
 
@@ -22,10 +22,11 @@ function GameForm({gameList, setGameList}) {
       platform,
       description,
       release,
-      // image,
     }
-
-   createGame(newGame).then(data => setGameList([...gameList, data]))
+    if (image)
+      newGame.image = image
+  createGame(newGame).then(data => setGameList([...gameList, data])).then(setSelected(1))
+  
 
   }
 
@@ -38,9 +39,9 @@ function GameForm({gameList, setGameList}) {
       },
       body: JSON.stringify(gameBody)
       })
-
+      
       return data.json()
-
+      
   }
 
 
@@ -62,8 +63,8 @@ function GameForm({gameList, setGameList}) {
           <input developer="developer" onChange={(e)=>setForm({...form,developer: e.target.value})}/>
           <p>Description</p>
           <input description="description" onChange={(e)=>setForm({...form,description: e.target.value})}/>
-          {/* <p>Image</p>
-          <input image="image" onChange={(e)=>setForm({...form,image: e.target.value})}/> */}
+          <p>Image</p>
+          <input image="image" onChange={(e)=>setForm({...form,image: e.target.value})}/>
         </label>
   </fieldset>
       <button type="submit">Submit</button>
