@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Settings.css";
 
 function Settings({ gameList, setGenre, setPlatform }) {
@@ -32,21 +31,18 @@ function Settings({ gameList, setGenre, setPlatform }) {
   });
 
   return (
-    <div>
-      <select onChange={handleChangeGenre}>
-        <option className="saveState" value="">
-          Genre
-        </option>
+    <div className="settingsWrapper">
+      <select className="searchbar dropdown" onChange={handleChangeGenre}>
+        <option className="saveState">Genre</option>
         {genres.map((genre) => (
           <option key={genre} className="options" value={genre}>
             {genre}
           </option>
         ))}
       </select>
-      <select onChange={handleChangePlatform}>
-        <option className="saveState" value="">
-          Platform
-        </option>
+
+      <select className="searchbar dropdown" onChange={handleChangePlatform}>
+        <option className="saveState">Platform</option>
         {platforms.map((platform) => (
           <option key={platform} className="options" value={platform}>
             {platform}
@@ -56,4 +52,5 @@ function Settings({ gameList, setGenre, setPlatform }) {
     </div>
   );
 }
+
 export default Settings;
