@@ -73,7 +73,7 @@ function Game() {
               setPlatform={setPlatform}
             />
           ) : null}
-          {selected === 2 ? <Settings  gameList={gameList} setGenre={setGenre} setPlatform={setPlatform} /> : null}
+          {/* {selected === 2 ? <Settings  gameList={gameList} setGenre={setGenre} setPlatform={setPlatform} /> : null} */}
           {selected === 3 ? <GameForm gameList={gameList} setGameList={setGameList} /> : null}
           {selected === 4 ? <DisplayGame game={game} /> : null}
           {selected === 4 ? <Reviews game={game} /> : null}
