@@ -1,0 +1,33 @@
+form .gameEntry {
+  width: 300px;
+  margin-left: 0.5rem;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: fit-content;
+}
+
+.formEntry {
+  padding: 0.5rem;
+}
+
+.formEntry .gameEntry:hover {
+  border-bottom: 1px solid rgb(255, 94, 0, 0.8);
+}
+
+.formEntry .gameEntry:focus {
+  border-bottom: 1px solid rgb(255, 94, 0, 1);
+}
+
+.req {
+  font-weight: bold;
+}
+
+.gameFormWrapper {
+  display: flex;
+  justify-content: space-between;
+}

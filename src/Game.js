@@ -3,7 +3,7 @@ import "./Game.css";
 import Nav from "./Nav";
 
 import GameList from "./GameList";
-import Settings from "./Settings";
+// import Settings from "./Settings";
 import GameForm from "./GameForm";
 import DisplayGame from "./DisplayGame";
 import User from "./User";
@@ -25,8 +25,6 @@ function Game() {
       });
   }, [game]);
 
-
-
   const selectGame = (game) => {
     setGame(game);
     setShowGame(true);
@@ -41,8 +39,8 @@ function Game() {
     } else if (platform) {
       return game.platform === platform;
     }
-  })
-// console.log(filterGames)
+  });
+
   return (
     <section id="gameSection">
       <div className="wrapper">
@@ -58,7 +56,14 @@ function Game() {
       </div>
 
       <div className="gameWrapper">
-        <Nav selected={selected} setSelected={setSelected} game={game} />
+        <Nav
+          selected={selected}
+          setSelected={setSelected}
+          game={game}
+          gameList={gameList}
+          setGenre={setGenre}
+          setPlatform={setPlatform}
+        />
         <div className="container">
           {selected === 1 ? (
             <GameList
@@ -66,13 +71,16 @@ function Game() {
               selectGame={selectGame}
             />
           ) : null}
-          {selected === 2 ? (
+          {/* {selected === 2 ? (
             <Settings
               gameList={gameList}
               setGenre={setGenre}
               setPlatform={setPlatform}
             />
-          ) : null}
+          ) : null} */}
+          {/* {selected === 3 ? (
+            <GameForm gameList={gameList} setGameList={setGameList} /> */}
+          {/* ) : null} */}
           {/* {selected === 2 ? <Settings  gameList={gameList} setGenre={setGenre} setPlatform={setPlatform} /> : null} */}
           {selected === 3 ? <GameForm gameList={gameList} setGameList={setGameList} setSelected={setSelected} /> : null}
           {selected === 4 ? <DisplayGame gameList={gameList} setGameList={setGameList} setSelected={setSelected} setGame={setGame} game={game} /> : null}
@@ -83,6 +91,5 @@ function Game() {
     </section>
   );
 }
-
 
 export default Game;

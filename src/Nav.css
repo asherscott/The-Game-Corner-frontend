@@ -25,3 +25,11 @@ nav {
   color: rgb(255, 140, 73);
 }
 
+.settingLink:hover .settingsWrapper {
+  display: flex;
+}
+
+.settingsDropdown {
+  height: 500px;
+  background-color: aqua;
+}

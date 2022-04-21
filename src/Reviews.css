@@ -31,7 +31,7 @@
   border-bottom: 2px solid rgb(178, 178, 178);
 }
 
-.reviewForm button {
+.submitBtn {
   /* display: none; */
   font-size: 12pt;
   height: 30px;
@@ -40,8 +40,9 @@
   border-radius: 5px;
 }
 
-.reviewForm button:hover {
+.submitBtn:hover {
   cursor: pointer;
+  background-color: rgb(255, 94, 0, 0.5);
 }
 
 /* .reviewForm input:focus + button {

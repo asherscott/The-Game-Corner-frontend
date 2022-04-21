@@ -1,6 +1,7 @@
 import "./Nav.css";
+import Settings from "./Settings";
 
-function Nav({ selected, setSelected, game }) {
+function Nav({ selected, setSelected, game, gameList, setGenre, setPlatform }) {
   return (
     <div className="navWrapper">
       <nav>
@@ -11,11 +12,13 @@ function Nav({ selected, setSelected, game }) {
           Game List
         </span>
 
-        <span
-          onClick={() => setSelected(2)}
-          className={`link ${selected === 2 ? "selected" : ""}`}
-        >
+        <span className={`link ${selected === 2 ? "selected" : "settingLink"}`}>
           Settings
+          <Settings
+            gameList={gameList}
+            setGenre={setGenre}
+            setPlatform={setPlatform}
+          />
         </span>
 
         <span

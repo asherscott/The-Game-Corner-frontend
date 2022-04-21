@@ -1,7 +1,9 @@
+import { useState } from "react";
 import "./DisplayGame.css";
 
 function DisplayGame({ game, setSelected, setGame, setGameList , gameList}) {
   // Displays additional info about a game instance
+  const [gameRating, setGameRating] = useState(game.avg_rating.toFixed(1));
 
   function avgRating() {
     // const ratingArray = game.review.map((review) => review.rating);
@@ -23,7 +25,16 @@ function DisplayGame({ game, setSelected, setGame, setGameList , gameList}) {
   return (
     <div className="gameInfo">
       <div className="gameCard">
-        <h3>{game.name}</h3>
+        <h3>
+          {game.name}{" "}
+          <span
+            className={`avgRating ${game.avg_rating >= 4 ? "green" : ""} ${
+              game.avg_rating < 2 ? "red" : ""
+            }`}
+          >
+            {game.avg_rating.toFixed(1)}
+          </span>
+        </h3>
         <p>
           <span>Genre: </span>
           {game.genre}

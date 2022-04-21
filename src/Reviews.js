@@ -70,7 +70,9 @@ function Reviews({ game }) {
             name="comment"
             required
           />
-          <button type="submit">Comment</button>
+          <button className="submitBtn" type="submit">
+            Comment
+          </button>
         </form>
       </div>
 

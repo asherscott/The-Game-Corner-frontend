@@ -1,0 +1,27 @@
+.saveState {
+  font-weight: bold;
+}
+
+.options {
+  border: none;
+  outline: none;
+}
+
+.settingsWrapper {
+  padding-top: 0.5rem;
+  position: absolute;
+  width: 220px;
+  height: 300px;
+  display: none;
+  background-color: rgb(15, 15, 15, 0.8);
+  flex-direction: column;
+}
+
+.settingsWrapper > .dropdown {
+  max-width: 180px;
+  cursor: pointer;
+}
+
+.settingsWrapper:hover {
+  cursor: auto;
+}
