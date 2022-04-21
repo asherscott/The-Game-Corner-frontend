@@ -15,8 +15,11 @@ function DisplayGame({ game, setSelected, setGame, setGameList , gameList}) {
         method: 'DELETE',
         headers: { Accept: 'application/json' }
       })
-      const newGameList = gameList.filter(game => game.id !== gameId)
-      setGameList(newGameList)
+      .then(
+      // const newGameList = gameList.filter(game => game.id !== gameId)
+      // setGameList(gameList.filter(game => game.id !== gameId))
+      setGameList(prevGameList => prevGameList.filter(game => game.id !== gameId))
+      )
       setGame(null)
       setSelected(1)
     }
@@ -55,7 +58,7 @@ function DisplayGame({ game, setSelected, setGame, setGameList , gameList}) {
           <br />
           <p>{game.description}</p>
         </div>
-        <button onClick={()=>deleteGame(game.id)}>hi</button>
+        <button onClick={()=>deleteGame(game.id)}>Delete Game</button>
       </div>
       <img className="gameImg" src={game.image} alt={ game.name + " photo"} />
     </div>

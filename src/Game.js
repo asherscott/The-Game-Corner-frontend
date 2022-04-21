@@ -23,7 +23,7 @@ function Game() {
       .then((games) => {
         setGameList(games);
       });
-  }, [game]);
+  }, []);
 
   const selectGame = (game) => {
     setGame(game);
