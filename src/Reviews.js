@@ -31,18 +31,21 @@ function Reviews({ game }) {
 
   function submitReview(e) {
     e.preventDefault();
+    if (newReview.rating) {
+      const config = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newReview),
+      };
 
-    const config = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newReview),
-    };
-
-    fetch("http://localhost:9292/reviews", config)
-      .then((r) => r.json())
-      .then((rev) => {
-        setReviews((prevState) => [...prevState, rev]);
-      });
+      fetch("http://localhost:9292/reviews", config)
+        .then((r) => r.json())
+        .then((rev) => {
+          setReviews((prevState) => [...prevState, rev]);
+        });
+    } else {
+      alert("please add a rating");
+    }
   }
 
   return (
@@ -65,6 +68,7 @@ function Reviews({ game }) {
               handleNewReview({ [e.target.name]: e.target.value })
             }
             name="comment"
+            required
           />
           <button type="submit">Comment</button>
           {/* change button clickable/notClickable class if form has been filled in */}
