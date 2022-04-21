@@ -21,8 +21,7 @@ function Search({ placeholder, gameList, selectGame }) {
             )
             .map((game) => (
               <li
-                // setPreviewImg() will eventually be set to an img url for a game, once it's added to the db
-                onMouseOver={() => setPreviewImg(game.name)}
+                onMouseOver={() => setPreviewImg(game.image)}
                 onMouseOut={() => setPreviewImg(null)}
                 onClick={() => selectGame(game)}
                 key={game.id}
@@ -34,11 +33,7 @@ function Search({ placeholder, gameList, selectGame }) {
         </ul>
       </div>
       {previewImg ? (
-        <img
-          className="gameImg previewImg"
-          src="https://cohenwoodworking.com/wp-content/uploads/2016/09/image-placeholder-500x500.jpg"
-          // src={previewImg}
-        />
+        <img className="gameImg previewImg" src={previewImg} />
       ) : null}
     </div>
   );

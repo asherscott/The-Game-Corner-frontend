@@ -71,8 +71,6 @@ function Reviews({ game }) {
             required
           />
           <button type="submit">Comment</button>
-          {/* change button clickable/notClickable class if form has been filled in */}
-          {/* <button className={} type="submit">Comment</button> */}
         </form>
       </div>
 

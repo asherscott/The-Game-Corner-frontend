@@ -28,10 +28,7 @@ function DisplayGame({ game }) {
           <p>{game.description}</p>
         </div>
       </div>
-      <img
-        className="gameImg"
-        src="https://cohenwoodworking.com/wp-content/uploads/2016/09/image-placeholder-500x500.jpg"
-      />
+      <img className="gameImg" src={game.image} />
     </div>
   );
 }
