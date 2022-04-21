@@ -3,7 +3,7 @@ import "./Game.css";
 import Nav from "./Nav";
 
 import GameList from "./GameList";
-import Settings from "./Settings";
+// import Settings from "./Settings";
 import GameForm from "./GameForm";
 import DisplayGame from "./DisplayGame";
 import User from "./User";
