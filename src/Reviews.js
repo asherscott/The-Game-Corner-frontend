@@ -3,12 +3,12 @@ import ReactStars from "react-rating-stars-component";
 import Review from "./Review";
 import { useState } from "react";
 
-function Reviews({ game }) {
+function Reviews({ game, selectUser }) {
   const [newReview, setNewReview] = useState({});
   const [reviews, setReviews] = useState(game.reviews);
 
   const renderReviews = reviews.map((review) => {
-    return <Review key={review.id} review={review} />;
+    return <Review key={review.id} review={review} selectUser={selectUser} />;
   });
 
   function handleNewReview(object) {

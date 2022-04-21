@@ -13,7 +13,9 @@ function Game() {
   const [gameList, setGameList] = useState([]);
   const [selected, setSelected] = useState(1);
   const [game, setGame] = useState(null);
+  const [user, setUser] = useState(null);
   const [showGame, setShowGame] = useState(false);
+  const [showUser, setShowUser] = useState(false);
   const [genre, setGenre] = useState("");
   const [platform, setPlatform] = useState("");
 
@@ -29,6 +31,16 @@ function Game() {
     setGame(game);
     setShowGame(true);
     setSelected(4);
+  };
+
+  const selectUser = (user) => {
+    fetch(`http://localhost:9292/users/${user}`)
+      .then((r) => r.json())
+      .then((u) => {
+        setUser(u);
+        setShowUser(true);
+        setSelected(5);
+      });
   };
 
   const filterGames = gameList.filter((game) => {
@@ -60,6 +72,7 @@ function Game() {
           selected={selected}
           setSelected={setSelected}
           game={game}
+          user={user}
           gameList={gameList}
           setGenre={setGenre}
           setPlatform={setPlatform}
@@ -71,21 +84,27 @@ function Game() {
               selectGame={selectGame}
             />
           ) : null}
-          {/* {selected === 2 ? (
-            <Settings
-              gameList={gameList}
-              setGenre={setGenre}
-              setPlatform={setPlatform}
-            />
-          ) : null} */}
-          {/* {selected === 3 ? (
-            <GameForm gameList={gameList} setGameList={setGameList} /> */}
-          {/* ) : null} */}
           {/* {selected === 2 ? <Settings  gameList={gameList} setGenre={setGenre} setPlatform={setPlatform} /> : null} */}
-          {selected === 3 ? <GameForm gameList={gameList} setGameList={setGameList} setSelected={setSelected} /> : null}
-          {selected === 4 ? <DisplayGame gameList={gameList} setGameList={setGameList} setSelected={setSelected} setGame={setGame} game={game} /> : null}
-          {selected === 4 ? <Reviews game={game} /> : null}
-          {selected === 5 ? <User /> : null}
+          {selected === 3 ? (
+            <GameForm
+              gameList={gameList}
+              setGameList={setGameList}
+              setSelected={setSelected}
+            />
+          ) : null}
+          {selected === 4 ? (
+            <DisplayGame
+              gameList={gameList}
+              setGameList={setGameList}
+              setSelected={setSelected}
+              setGame={setGame}
+              game={game}
+            />
+          ) : null}
+          {selected === 4 ? (
+            <Reviews game={game} selectUser={selectUser} />
+          ) : null}
+          {selected === 5 ? <User user={user} /> : null}
         </div>
       </div>
     </section>

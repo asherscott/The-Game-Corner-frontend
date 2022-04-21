@@ -2,7 +2,7 @@ import ReactStars from "react-rating-stars-component";
 import "./Review.css";
 import { useState } from "react";
 
-function Review({ review }) {
+function Review({ review, selectUser }) {
   const [likes, setLikes] = useState(review.likes);
 
   function handleLike(e) {
@@ -26,7 +26,7 @@ function Review({ review }) {
         <div className="starsWrapper">
           <ReactStars count={5} size={20} edit={false} value={review.rating} />
         </div>
-        <h4>{review.username}</h4>
+        <h4 onClick={() => selectUser(review.user_id)}>{review.username}</h4>
         <span className="date">{review.date}</span>
       </header>
 

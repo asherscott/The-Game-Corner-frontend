@@ -30,3 +30,7 @@
 article:hover .revBtn {
   opacity: 1;
 }
+
+h4:hover {
+  cursor: pointer;
+}
