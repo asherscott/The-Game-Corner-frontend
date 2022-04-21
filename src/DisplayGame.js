@@ -2,6 +2,11 @@ import "./DisplayGame.css";
 
 function DisplayGame({ game }) {
   // Displays additional info about a game instance
+
+  function avgRating() {
+    // const ratingArray = game.review.map((review) => review.rating);
+    // ratingArray.map
+  }
   return (
     <div className="gameInfo">
       <div className="gameCard">
