@@ -9,7 +9,7 @@ import DisplayGame from "./DisplayGame";
 import User from "./User";
 import Reviews from "./Reviews";
 
-function Game() {
+function Game({ loggedIn, loggedUser }) {
   const [gameList, setGameList] = useState([]);
   const [selected, setSelected] = useState(1);
   const [game, setGame] = useState(null);
@@ -102,7 +102,12 @@ function Game() {
             />
           ) : null}
           {selected === 4 ? (
-            <Reviews game={game} selectUser={selectUser} />
+            <Reviews
+              game={game}
+              selectUser={selectUser}
+              loggedIn={loggedIn}
+              loggedUser={loggedUser}
+            />
           ) : null}
           {selected === 5 ? <User user={user} /> : null}
         </div>

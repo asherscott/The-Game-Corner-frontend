@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import Review from "./Review";
 import { useState } from "react";
 
-function Reviews({ game, selectUser }) {
+function Reviews({ game, selectUser, loggedIn, loggedUser }) {
   const [newReview, setNewReview] = useState({});
   const [reviews, setReviews] = useState(game.reviews);
 
@@ -20,13 +20,21 @@ function Reviews({ game, selectUser }) {
       "-" +
       current.getDate();
 
-    setNewReview((prevState) => ({
-      ...prevState,
-      ...object,
-      ...{ game_id: game.id },
-      ...{ date: cDate },
-      ...{ user_id: 1 },
-    }));
+    loggedIn
+      ? setNewReview((prevState) => ({
+          ...prevState,
+          ...object,
+          ...{ game_id: game.id },
+          ...{ date: cDate },
+          ...{ user_id: loggedUser.id },
+        }))
+      : setNewReview((prevState) => ({
+          ...prevState,
+          ...object,
+          ...{ game_id: game.id },
+          ...{ date: cDate },
+          ...{ user_id: 1 },
+        }));
   }
 
   function submitReview(e) {
