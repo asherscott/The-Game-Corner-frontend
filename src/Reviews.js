@@ -3,12 +3,13 @@ import ReactStars from "react-rating-stars-component";
 import Review from "./Review";
 import { useState } from "react";
 
-function Reviews({ game }) {
+function Reviews({ game, selectUser, loggedIn, loggedUser, setGame }) {
   const [newReview, setNewReview] = useState({});
   const [reviews, setReviews] = useState(game.reviews);
 
   const renderReviews = reviews.map((review) => {
-    return <Review key={review.id} review={review} reviews={reviews} setReviews={setReviews} />;
+    return <Review key={review.id} review={review} reviews={reviews} setReviews={setReviews} selectUser={selectUser} />;
+    
   });
 
   function handleNewReview(object) {
@@ -20,13 +21,21 @@ function Reviews({ game }) {
       "-" +
       current.getDate();
 
-    setNewReview((prevState) => ({
-      ...prevState,
-      ...object,
-      ...{ game_id: game.id },
-      ...{ date: cDate },
-      ...{ user_id: 1 },
-    }));
+    loggedIn
+      ? setNewReview((prevState) => ({
+          ...prevState,
+          ...object,
+          ...{ game_id: game.id },
+          ...{ date: cDate },
+          ...{ user_id: loggedUser.id },
+        }))
+      : setNewReview((prevState) => ({
+          ...prevState,
+          ...object,
+          ...{ game_id: game.id },
+          ...{ date: cDate },
+          ...{ user_id: 1 },
+        }));
   }
 
   function submitReview(e) {
@@ -41,7 +50,10 @@ function Reviews({ game }) {
       fetch("http://localhost:9292/reviews", config)
         .then((r) => r.json())
         .then((rev) => {
-          setReviews((prevState) => [...prevState, rev]);
+          // setReviews((prevState) => [...prevState, rev]);
+          const updateGame = { ...game };
+          updateGame.reviews.push(rev);
+          setGame(updateGame);
         });
     } else {
       alert("please add a rating");

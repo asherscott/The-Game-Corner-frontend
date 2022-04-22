@@ -1,7 +1,15 @@
 import "./Nav.css";
 import Settings from "./Settings";
 
-function Nav({ selected, setSelected, game, gameList, setGenre, setPlatform }) {
+function Nav({
+  selected,
+  setSelected,
+  game,
+  gameList,
+  setGenre,
+  setPlatform,
+  user,
+}) {
   return (
     <div className="navWrapper">
       <nav>
@@ -37,12 +45,14 @@ function Nav({ selected, setSelected, game, gameList, setGenre, setPlatform }) {
           </span>
         ) : null}
 
-        <span
-          onClick={() => setSelected(5)}
-          className={`link ${selected === 5 ? "selected" : ""}`}
-        >
-          (username here)
-        </span>
+        {user ? (
+          <span
+            onClick={() => setSelected(5)}
+            className={`link ${selected === 5 ? "selected" : ""}`}
+          >
+            {user.name}
+          </span>
+        ) : null}
       </nav>
     </div>
   );

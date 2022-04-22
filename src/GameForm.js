@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./GameForm.css";
 
-function GameForm({ gameList, setGameList,setSelected}) {
+function GameForm({ gameList, setGameList, setSelected }) {
   const [previewImage, setPreviewImage] = useState("");
 
   const [form, setForm] = useState({
@@ -29,18 +29,21 @@ function GameForm({ gameList, setGameList,setSelected}) {
     if (image){
       newGame.image = image
   createGame(newGame).then(data => setGameList([...gameList, data])).then(setSelected(1))
-  
-
-    };
-
-    // if (newGame.image) {
-    //   createGame(newGame).then((data) => setGameList([...gameList, data])).then(setSelected(1));
-    // } else {
-    //   const { ["image"]: noImg, ...newGameNoImg } = newGame;
-
-    //   createGame(newGameNoImg).then((data) => setGameList([...gameList, data])).then(setSelected(1));
-    // }
+  };
   }
+
+  //   if (newGame.image) {
+  //     createGame(newGame)
+  //       .then((data) => setGameList([...gameList, data]))
+  //       .then(setSelected(1));
+  //   } else {
+  //     const { ["image"]: noImg, ...newGameNoImg } = newGame;
+
+  //     createGame(newGameNoImg)
+  //       .then((data) => setGameList([...gameList, data]))
+  //       .then(setSelected(1));
+  //   }
+  // }
 
   async function createGame(gameBody) {
     const data = await fetch(`http://localhost:9292/games`, {
@@ -49,11 +52,10 @@ function GameForm({ gameList, setGameList,setSelected}) {
         "Content-Type": "application/json",
         Accepts: "application/json",
       },
-      body: JSON.stringify(gameBody)
-      })
-      
-      return data.json()
-      
+      body: JSON.stringify(gameBody),
+    });
+
+    return data.json();
   }
 
   return (
@@ -139,6 +141,7 @@ function GameForm({ gameList, setGameList,setSelected}) {
       />
     </div>
   );
+
 }
 
 export default GameForm;
