@@ -40,3 +40,18 @@ h3 {
 .gameCard .green {
   color: lightgreen;
 }
+
+.deleteBtn {
+  /* display: none; */
+  font-size: 12pt;
+  height: 30px;
+  background-color: rgb(44, 44, 44);
+  border: none;
+  border-radius: 5px;
+
+}
+
+.deleteBtn:hover {
+  cursor: pointer;
+  background-color: rgb(255, 94, 0, 0.5);
+}

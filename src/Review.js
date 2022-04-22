@@ -2,7 +2,7 @@ import ReactStars from "react-rating-stars-component";
 import "./Review.css";
 import { useState } from "react";
 
-function Review({ review }) {
+function Review({ review, reviews, setReviews }) {
   const [likes, setLikes] = useState(review.likes);
 
   function handleLike(e) {
@@ -20,6 +20,17 @@ function Review({ review }) {
       .then((r) => r.json())
       .then((rev) => setLikes(rev.likes));
   }
+
+  const deleteReview = (reviewId) => {
+    fetch(`http://localhost:9292/reviews/${reviewId}`, {
+      method: 'DELETE',
+      headers: { Accept: 'application/json' }
+    })
+
+    const newReviews = reviews.filter((review) => review.id !== reviewId)
+    setReviews(newReviews)
+  }
+
   return (
     <article>
       <header className="reviewHead">
@@ -40,6 +51,7 @@ function Review({ review }) {
           \/
         </button>
       </div>
+      
       <br />
     </article>
   );

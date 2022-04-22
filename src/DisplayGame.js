@@ -57,8 +57,9 @@ function DisplayGame({ game, setSelected, setGame, setGameList , gameList}) {
         <div className="desription">
           <br />
           <p>{game.description}</p>
+          <br></br>
+        <button onClick={()=>deleteGame(game.id)} className="deleteBtn">Delete Game</button>
         </div>
-        <button onClick={()=>deleteGame(game.id)}>Delete Game</button>
       </div>
       <img className="gameImg" src={game.image} alt={ game.name + " photo"} />
     </div>

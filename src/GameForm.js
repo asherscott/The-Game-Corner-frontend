@@ -26,21 +26,20 @@ function GameForm({ gameList, setGameList,setSelected}) {
       description,
       release,
     }
-  //   if (image)
-  //     newGame.image = image
-  // createGame(newGame).then(data => setGameList([...gameList, data])).then(setSelected(1))
+    if (image){
+      newGame.image = image
+  createGame(newGame).then(data => setGameList([...gameList, data])).then(setSelected(1))
   
 
-    //   image,
-    // };
+    };
 
-    if (newGame.image) {
-      createGame(newGame).then((data) => setGameList([...gameList, data])).then(setSelected(1));
-    } else {
-      const { ["image"]: noImg, ...newGameNoImg } = newGame;
+    // if (newGame.image) {
+    //   createGame(newGame).then((data) => setGameList([...gameList, data])).then(setSelected(1));
+    // } else {
+    //   const { ["image"]: noImg, ...newGameNoImg } = newGame;
 
-      createGame(newGameNoImg).then((data) => setGameList([...gameList, data])).then(setSelected(1));
-    }
+    //   createGame(newGameNoImg).then((data) => setGameList([...gameList, data])).then(setSelected(1));
+    // }
   }
 
   async function createGame(gameBody) {

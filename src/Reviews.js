@@ -8,7 +8,7 @@ function Reviews({ game }) {
   const [reviews, setReviews] = useState(game.reviews);
 
   const renderReviews = reviews.map((review) => {
-    return <Review key={review.id} review={review} />;
+    return <Review key={review.id} review={review} reviews={reviews} setReviews={setReviews} />;
   });
 
   function handleNewReview(object) {
