@@ -25,25 +25,26 @@ function GameForm({ gameList, setGameList, setSelected }) {
       platform,
       description,
       release,
+      image,
+    };
+    //   if (image){
+    //     newGame.image = image
+    // createGame(newGame).then(data => setGameList([...gameList, data])).then(setSelected(1))
+    // };
+    // }
+
+    if (newGame.image) {
+      createGame(newGame)
+        .then((data) => setGameList([...gameList, data]))
+        .then(setSelected(1));
+    } else {
+      const { ["image"]: noImg, ...newGameNoImg } = newGame;
+
+      createGame(newGameNoImg)
+        .then((data) => setGameList([...gameList, data]))
+        .then(setSelected(1));
     }
-    if (image){
-      newGame.image = image
-  createGame(newGame).then(data => setGameList([...gameList, data])).then(setSelected(1))
-  };
   }
-
-  //   if (newGame.image) {
-  //     createGame(newGame)
-  //       .then((data) => setGameList([...gameList, data]))
-  //       .then(setSelected(1));
-  //   } else {
-  //     const { ["image"]: noImg, ...newGameNoImg } = newGame;
-
-  //     createGame(newGameNoImg)
-  //       .then((data) => setGameList([...gameList, data]))
-  //       .then(setSelected(1));
-  //   }
-  // }
 
   async function createGame(gameBody) {
     const data = await fetch(`http://localhost:9292/games`, {
@@ -141,7 +142,6 @@ function GameForm({ gameList, setGameList, setSelected }) {
       />
     </div>
   );
-
 }
 
 export default GameForm;
