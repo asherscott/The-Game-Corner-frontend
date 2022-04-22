@@ -49,7 +49,7 @@ function Reviews({ game, selectUser, loggedIn, loggedUser, setGame }) {
       fetch("http://localhost:9292/reviews", config)
         .then((r) => r.json())
         .then((rev) => {
-          setReviews((prevState) => [...prevState, rev]);
+          // setReviews((prevState) => [...prevState, rev]);
           const updateGame = { ...game };
           updateGame.reviews.push(rev);
           setGame(updateGame);
