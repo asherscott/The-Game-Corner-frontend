@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import Review from "./Review";
 import { useState } from "react";
 
-function Reviews({ game, selectUser, loggedIn, loggedUser }) {
+function Reviews({ game, selectUser, loggedIn, loggedUser, setGame }) {
   const [newReview, setNewReview] = useState({});
   const [reviews, setReviews] = useState(game.reviews);
 
@@ -50,6 +50,9 @@ function Reviews({ game, selectUser, loggedIn, loggedUser }) {
         .then((r) => r.json())
         .then((rev) => {
           setReviews((prevState) => [...prevState, rev]);
+          const updateGame = { ...game };
+          updateGame.reviews.push(rev);
+          setGame(updateGame);
         });
     } else {
       alert("please add a rating");

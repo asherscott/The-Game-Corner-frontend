@@ -107,6 +107,7 @@ function Game({ loggedIn, loggedUser }) {
               selectUser={selectUser}
               loggedIn={loggedIn}
               loggedUser={loggedUser}
+              setGame={setGame}
             />
           ) : null}
           {selected === 5 ? <User user={user} /> : null}
