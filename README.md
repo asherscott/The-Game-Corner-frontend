@@ -13,4 +13,5 @@ A video game catalog to browse game information and reviews.
 - [Faker](https://github.com/faker-ruby/faker)
 - [React Router](https://v5.reactrouter.com/web/guides/quick-start)
 - [React Stars](https://github.com/ertanhasani/react-stars)
+- Backend for this project can be found [here](https://github.com/asherscott/phase-3-sinatra-react-project) 
 
